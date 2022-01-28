@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form id="modify_customer" name="modify_customer" action="{% url 'customer_list:modify_action' latest_customer_list.Customer_Idx %}" method="post">
+    {% csrf_token %}
+    
+    <table border="1">
+        <tr>
+            <th scope="Cusotmer_Name">이름</th>
+            <th scope="Customer_Barnchcode">지점</th>
+            <th scope="Customer_Rank">등급</th>
+            <th scope="Cusotmer_Brith">생년월일</th>
+            <th scope="Cusotmer_Sex">성별</th>
+            <th scope="Cusotmer_Address">주소</th>
+            <th scope="Customer_Status">상태</th>
+        </tr>    
+        <tr>
+            <td><input type="text" name="c_name" value="{{latest_customer_list.Customer_Name}}"></td>
+            <td><input type="text" name="c_branch" value="{{latest_customer_list.Customer_Barnchcode}}"></td>
+            <td><input type="text" name="c_rank" value="{{latest_customer_list.Customer_Rank}}"></td>
+            <td><input type="text" name="c_birth" value="{{latest_customer_list.Customer_Birth|date:'Y-m-d'}}"></td>
+            <td><input type="text" name="c_sex" value="{{latest_customer_list.Customer_Sex}}"></td>
+            <td><input type="text" name="c_address" value="{{latest_customer_list.Customer_Address}}"></td>
+            <td><input type="text" name="c_status" value="{{latest_customer_list.Customer_Status}}"></td>
+        </tr>
+    </table>
+    <input type="submit" value="수정">
+    </form>
+    
+
+</body>
+</html>

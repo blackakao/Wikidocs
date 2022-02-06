@@ -5,6 +5,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from django.utils import timezone
 from .models import Question
 from .forms import QuestionForm, AnswerForm
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -13,8 +14,17 @@ def index(request):
     """
     pybo 목록 출력
     """
+    # 입력 파라미터
+    page = request.GET.get('page','1') #페이지
+
+    #조회
     question_list = Question.objects.order_by('-create_date')
-    context = {'question_list': question_list}
+
+    #페이징 처리
+    paginator = Paginator(question_list, 10)
+    page_obj = paginator.get_page(page)
+
+    context = {'question_list': page_obj}
     return render(request, 'pybo/question_list.html', context)
 
 def detail(request, question_id):

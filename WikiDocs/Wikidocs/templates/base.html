@@ -10,9 +10,14 @@
     <title>제목란</title>
 </head>
 <body>
-
+{% include "navbar.html" %}
+<!-- 기본 템플릿 안에 삽입될 내용  -->
 {% block content %}
 {% endblock %}
     
+<!-- jQuery JS -->
+<script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+<!-- Bootstrap JS jQuery가 먼저 -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
 </body>
 </html>
